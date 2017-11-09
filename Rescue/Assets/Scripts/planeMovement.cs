@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class planeMovement : MonoBehaviour {
 
+	Rigidbody rb;
+
 	// Use this for initialization
 	void Start () {
-		
+		rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		rb.velocity = new Vector3 (0, 5f, 0);
 	}
 }
