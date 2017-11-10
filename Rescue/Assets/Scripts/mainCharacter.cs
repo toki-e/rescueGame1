@@ -9,6 +9,12 @@ public class mainCharacter : MonoBehaviour {
 	Rigidbody rb;
 	SpriteRenderer sr; 
 
+	/*public Transform groundCheck;
+	public float groundCheckRadius;
+	public LayerMask whatIsGround; */
+
+	public bool grounded = true;
+
 	Vector3 beforeJumpPos;
 
 	[SerializeField]
@@ -19,6 +25,7 @@ public class mainCharacter : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		characterAnimator = GetComponentInChildren<Animator> ();
 		rb = GetComponent<Rigidbody> ();
 		sr = GetComponentInChildren<SpriteRenderer> ();
@@ -46,14 +53,22 @@ public class mainCharacter : MonoBehaviour {
 			characterAnimator.SetBool ("isJumping", false);
 		}*/
 
-		//try to get him to jump by resetting his pos back to starting pos when key is up???
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			characterAnimator.SetBool ("isJumping", true);
-			characterAnimator.SetBool ("isRunning", false);
-			rb.velocity = new Vector3 (0, 7f, 0);
+		if (rb.velocity.y == 0f) {
+			grounded = true;
+		}
 
-			//beforeJumpPos = transform.position;
-			//characterAnimator.SetBool ("isRunning", false);
+		if (grounded == true) {
+
+			//try to get him to jump by resetting his pos back to starting pos when key is up???
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				characterAnimator.SetBool ("isJumping", true);
+				characterAnimator.SetBool ("isRunning", false);
+				rb.velocity = new Vector3 (0, 7f, 0);
+				grounded = false;
+				//beforeJumpPos = transform.position;
+				//characterAnimator.SetBool ("isRunning", false);
+			}
+				
 		}
 
 		if (Input.GetKeyUp (KeyCode.Space)) {
