@@ -21,7 +21,7 @@ public class sceneChange : MonoBehaviour {
 		Debug.Log (_col.name);
 
 		if(_col.name == "playerbody"){
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene(3);
 		}
 	}
 }

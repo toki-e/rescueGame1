@@ -19,7 +19,7 @@ public class mainCharacter : MonoBehaviour {
 
 	[SerializeField]
 
-	float moveSpeed = 4f;
+	float moveSpeed = 20f;
 
 	Vector3 forward, right;
 
@@ -63,7 +63,7 @@ public class mainCharacter : MonoBehaviour {
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				characterAnimator.SetBool ("isJumping", true);
 				characterAnimator.SetBool ("isRunning", false);
-				rb.velocity = new Vector3 (0, 7f, 0);
+				rb.velocity = new Vector3 (0, 7.5f, 0);
 				grounded = false;
 				//beforeJumpPos = transform.position;
 				//characterAnimator.SetBool ("isRunning", false);
